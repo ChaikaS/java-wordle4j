@@ -43,7 +43,7 @@ public class Wordle {
 
             game.start();
         } catch (Exception e) {
-            if(logger != null) logger.println(e.getMessage());
+            if (logger != null) logger.println(e.getMessage());
         }
     }
 }
