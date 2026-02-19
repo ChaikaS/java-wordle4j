@@ -1,0 +1,56 @@
+package ru.yandex.practicum.dictionary;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class WordleDictionaryTest {
+
+    private WordleDictionary dictionary;
+
+    @BeforeEach
+    void setUp() {
+        dictionary = new WordleDictionary();
+    }
+
+    @Test
+    void addAll() {
+        dictionary.addAll(List.of("слово", "гонец", "шляпа"));
+        List<String> words = dictionary.getWords();
+        assertEquals(3, words.size());
+        assertTrue(words.contains("слово"));
+        assertTrue(words.contains("гонец"));
+        assertTrue(words.contains("шляпа"));
+    }
+
+    @Test
+    void addAll_multipleCalls() {
+        dictionary.addAll(List.of("один", "два"));
+        dictionary.addAll(List.of("три"));
+        List<String> words = dictionary.getWords();
+        assertEquals(3, words.size());
+        assertTrue(words.contains("один"));
+        assertTrue(words.contains("два"));
+        assertTrue(words.contains("три"));
+    }
+
+    @Test
+    void getWords() {
+        dictionary.addAll(List.of("гонец"));
+        List<String> words = dictionary.getWords();
+        assertNotNull(words);
+        assertEquals(1, words.size());
+        assertEquals("гонец", words.get(0));
+    }
+
+    @Test
+    void getWords_returnsSameListReference() {
+        dictionary.addAll(List.of("слово"));
+        List<String> first = dictionary.getWords();
+        List<String> second = dictionary.getWords();
+        assertSame(first, second, "getWords() возвращает один и тот же список");
+    }
+}
