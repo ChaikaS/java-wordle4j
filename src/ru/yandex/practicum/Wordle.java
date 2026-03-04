@@ -19,12 +19,10 @@ public class Wordle {
     public static final int WORD_LENGTH = 5;
 
     public static void main(String[] args) {
-        PrintWriter logger = null;
-
         try (FileOutputStream fos = new FileOutputStream(LOG_FILE_NAME);
              Writer writer = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
 
-            logger = new PrintWriter(writer, true);
+            PrintWriter logger = new PrintWriter(writer, true);
 
             WordleDictionaryLoader loader = new WordleDictionaryLoader(logger);
             WordleDictionary commonDictionary = loader.loadFromFile(WORLD_FILE_NAME);
@@ -43,7 +41,7 @@ public class Wordle {
 
             game.start();
         } catch (Exception e) {
-            if (logger != null) logger.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }

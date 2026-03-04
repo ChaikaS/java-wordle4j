@@ -1,5 +1,8 @@
 package ru.yandex.practicum.dictionary;
 
+import ru.yandex.practicum.exception.DictionaryLoadException;
+import ru.yandex.practicum.exception.EmptyDictionaryException;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -14,13 +17,21 @@ public class WordleDictionaryLoader {
         this.logger = logger;
     }
 
-    public WordleDictionary loadFromFile(String fileName) throws IOException {
+    public WordleDictionary loadFromFile(String fileName) throws IOException, EmptyDictionaryException, DictionaryLoadException {
         logger.println(String.format("Начато чтение файла %s для загрузки словаря", fileName));
         WordleDictionary dictionary = new WordleDictionary();
 
-        File dictionaryFile = getDictionaryFile(fileName);
-        List<String> dictionaryWords = readFile(dictionaryFile);
-        dictionary.addAll(dictionaryWords);
+        try {
+            File dictionaryFile = getDictionaryFile(fileName);
+            List<String> dictionaryWords = readFile(dictionaryFile);
+            dictionary.addAll(dictionaryWords);
+        } catch (FileNotFoundException e) {
+            throw new DictionaryLoadException("Файл словаря не найден: " + fileName);
+        }
+
+        if (dictionary.getWords().isEmpty()) {
+            throw new EmptyDictionaryException("Словарь пуст после загрузки из " + fileName);
+        }
 
         logger.println(String.format("Словарь из файла %s загружен", fileName));
         return dictionary;

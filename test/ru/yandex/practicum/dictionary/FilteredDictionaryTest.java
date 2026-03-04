@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FilteredDictionaryTest {
+public class FilteredDictionaryTest {
 
     private WordleDictionary commonDictionary;
     private FilteredDictionary filteredDictionary;

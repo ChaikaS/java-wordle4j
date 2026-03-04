@@ -5,16 +5,13 @@ import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.dictionary.FilteredDictionary;
 import ru.yandex.practicum.dictionary.WordleDictionary;
 
-import java.io.ByteArrayInputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static ru.yandex.practicum.Wordle.WORD_LENGTH;
 
-class WordleGameTest {
+public class WordleGameTest {
 
     private FilteredDictionary filteredDictionary;
     private PrintWriter logger;

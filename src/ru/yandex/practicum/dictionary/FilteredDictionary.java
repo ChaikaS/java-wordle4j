@@ -1,5 +1,7 @@
 package ru.yandex.practicum.dictionary;
 
+import ru.yandex.practicum.exception.DictionaryNotReadyException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,6 +33,9 @@ public class FilteredDictionary {
     }
 
     public String getRandomWord() {
+        if (filteredDictionary.isEmpty()) {
+            throw new DictionaryNotReadyException("Словарь пуст, невозможно выбрать слово");
+        }
         return filteredDictionary.get(random.nextInt(filteredDictionary.size()));
     }
 

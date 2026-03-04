@@ -5,9 +5,6 @@ import java.util.*;
 import static ru.yandex.practicum.Wordle.WORD_LENGTH;
 
 public class WordleDictionaryHelper {
-    public WordleDictionaryHelper() {
-    }
-
     public static String normalize(String word) {
         return word.toLowerCase().replace('ё', 'е');
     }

@@ -3,12 +3,9 @@ package ru.yandex.practicum.dictionary;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-class WordleDictionaryHelperTest {
+public class WordleDictionaryHelperTest {
     @Test
     void normalize_lowercase() {
         Assertions.assertEquals("слово", WordleDictionaryHelper.normalize("СлОвО"));
