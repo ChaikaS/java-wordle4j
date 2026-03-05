@@ -12,12 +12,12 @@ public class WordleDictionaryTest {
     private WordleDictionary dictionary;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         dictionary = new WordleDictionary();
     }
 
     @Test
-    void addAll() {
+    public void addAll() {
         dictionary.addAll(List.of("слово", "гонец", "шляпа"));
         List<String> words = dictionary.getWords();
         assertEquals(3, words.size());
@@ -27,7 +27,7 @@ public class WordleDictionaryTest {
     }
 
     @Test
-    void addAll_multipleCalls() {
+    public void addAll_multipleCalls() {
         dictionary.addAll(List.of("один", "два"));
         dictionary.addAll(List.of("три"));
         List<String> words = dictionary.getWords();
@@ -38,7 +38,7 @@ public class WordleDictionaryTest {
     }
 
     @Test
-    void getWords() {
+    public void getWords() {
         dictionary.addAll(List.of("гонец"));
         List<String> words = dictionary.getWords();
         assertNotNull(words);
@@ -47,7 +47,7 @@ public class WordleDictionaryTest {
     }
 
     @Test
-    void getWords_returnsSameListReference() {
+    public void getWords_returnsSameListReference() {
         dictionary.addAll(List.of("слово"));
         List<String> first = dictionary.getWords();
         List<String> second = dictionary.getWords();

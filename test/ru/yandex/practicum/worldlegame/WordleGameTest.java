@@ -18,7 +18,7 @@ public class WordleGameTest {
     private WordleGame game;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         WordleDictionary common = new WordleDictionary();
         common.addAll(List.of("гонец", "шляпа", "слово"));
         filteredDictionary = new FilteredDictionary(common);
@@ -27,26 +27,26 @@ public class WordleGameTest {
     }
 
     @Test
-    void isValidAnswer_trueWhenFiveRussianLetters() {
+    public void isValidAnswer_trueWhenFiveRussianLetters() {
         assertTrue(WordleGame.isValidAnswer("гонец"));
         assertTrue(WordleGame.isValidAnswer("Шляпа"));
     }
 
     @Test
-    void isValidAnswer_falseWhenWrongLength() {
+    public void isValidAnswer_falseWhenWrongLength() {
         assertFalse(WordleGame.isValidAnswer("гон"));
         assertFalse(WordleGame.isValidAnswer("гонецг"));
     }
 
     @Test
-    void isContainsWordInWordleDictionary_falseWhenWordInDictionary() {
+    public void isContainsWordInWordleDictionary_falseWhenWordInDictionary() {
         assertFalse(game.isContainsWordInWordleDictionary("гонец"));
         assertFalse(game.isContainsWordInWordleDictionary("шляпа"));
         assertFalse(game.isContainsWordInWordleDictionary("Слово"));
     }
 
     @Test
-    void isContainsWordInWordleDictionary_trueWhenWordNotInDictionary() {
+    public void isContainsWordInWordleDictionary_trueWhenWordNotInDictionary() {
         assertTrue(game.isContainsWordInWordleDictionary("нетта"));
         assertTrue(game.isContainsWordInWordleDictionary("абвгд"));
     }

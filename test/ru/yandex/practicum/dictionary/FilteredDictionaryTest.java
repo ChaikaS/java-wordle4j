@@ -13,7 +13,7 @@ public class FilteredDictionaryTest {
     private FilteredDictionary filteredDictionary;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         commonDictionary = new WordleDictionary();
         commonDictionary.addAll(List.of(
                 "слово",
@@ -26,7 +26,7 @@ public class FilteredDictionaryTest {
     }
 
     @Test
-    void addWordsToFilteredDictionary() {
+    public void addWordsToFilteredDictionary() {
         // addWordsToFilteredDictionary вызывается в конструкторе — проверяем результат
         List<String> words = filteredDictionary.getWords();
         assertEquals(3, words.size(), "В отфильтрованном словаре только 5-буквенные слова");
@@ -38,7 +38,7 @@ public class FilteredDictionaryTest {
     }
 
     @Test
-    void isContainsWord() {
+    public void isContainsWord() {
         assertTrue(filteredDictionary.isContainsWord("слово"));
         assertTrue(filteredDictionary.isContainsWord("гонец"));
         assertTrue(filteredDictionary.isContainsWord("шляпа"));
@@ -47,7 +47,7 @@ public class FilteredDictionaryTest {
     }
 
     @Test
-    void getRandomWord() {
+    public void getRandomWord() {
         String word = filteredDictionary.getRandomWord();
         assertNotNull(word);
         assertEquals(5, word.length(), "Случайное слово должно быть длиной 5");
@@ -55,7 +55,7 @@ public class FilteredDictionaryTest {
     }
 
     @Test
-    void getWords() {
+    public void getWords() {
         List<String> words = filteredDictionary.getWords();
         assertEquals(3, words.size());
         assertTrue(words.contains("слово"));

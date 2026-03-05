@@ -18,7 +18,7 @@ public class WordleGameAutoCompleteWordTest {
     private PrintWriter logger;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         WordleDictionary common = new WordleDictionary();
         common.addAll(List.of("гонец", "шляпа", "дубки", "тесть", "слово"));
         filteredDictionary = new FilteredDictionary(common);
@@ -27,13 +27,13 @@ public class WordleGameAutoCompleteWordTest {
     }
 
     @Test
-    void addAttempt() {
+    public void addAttempt() {
         assertDoesNotThrow(() -> autoComplete.addAttempt("гонец", "+++++"));
         assertDoesNotThrow(() -> autoComplete.addAttempt("шляпа", "-----"));
     }
 
     @Test
-    void getHintWord_noAttempts_returnsWordFromDictionary() {
+    public void getHintWord_noAttempts_returnsWordFromDictionary() {
         String hint = autoComplete.getHintWord();
         assertNotNull(hint);
         assertEquals(5, hint.length());
@@ -41,7 +41,7 @@ public class WordleGameAutoCompleteWordTest {
     }
 
     @Test
-    void getHintWord_afterAttempt_returnsValidWord() {
+    public void getHintWord_afterAttempt_returnsValidWord() {
         autoComplete.addAttempt("слово", "-^--^");
         String hint = autoComplete.getHintWord();
         assertNotNull(hint);

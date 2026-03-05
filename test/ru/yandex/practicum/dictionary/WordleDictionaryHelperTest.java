@@ -7,34 +7,34 @@ import java.util.List;
 
 public class WordleDictionaryHelperTest {
     @Test
-    void normalize_lowercase() {
+    public void normalize_lowercase() {
         Assertions.assertEquals("слово", WordleDictionaryHelper.normalize("СлОвО"));
     }
 
     @Test
-    void normalize_replacesYoWithE() {
+    public void normalize_replacesYoWithE() {
         Assertions.assertEquals("мед", WordleDictionaryHelper.normalize("мёд"));
     }
 
     @Test
-    void normalize_alreadyLowerAndNoYo() {
+    public void normalize_alreadyLowerAndNoYo() {
         Assertions.assertEquals("гонец", WordleDictionaryHelper.normalize("гонец"));
     }
 
     @Test
-    void wordToCharacterArr_returnsListOfChars() {
+    public void wordToCharacterArr_returnsListOfChars() {
         List<Character> expected = List.of('г', 'о', 'н', 'е', 'ц');
         Assertions.assertEquals(expected, WordleDictionaryHelper.wordToCharacterArr("гонец"));
     }
 
     @Test
-    void wordToCharacterArr_normalizesFirst() {
+    public void wordToCharacterArr_normalizesFirst() {
         List<Character> expected = List.of('е', 'ж', 'и', 'к');
         Assertions.assertEquals(expected, WordleDictionaryHelper.wordToCharacterArr("ёжик"));
     }
 
     @Test
-    void hasAnyLetters() {
+    public void hasAnyLetters() {
         String generatedWord = "гонец";
 
         Assertions.assertTrue(WordleDictionaryHelper.hasAnyLetters(generatedWord, "абвг"));
@@ -43,7 +43,7 @@ public class WordleDictionaryHelperTest {
     }
 
     @Test
-    void hasAllLetters() {
+    public void hasAllLetters() {
         String generatedWord = "гоноц";
         Assertions.assertTrue(WordleDictionaryHelper.hasAllLetters(generatedWord, "гоноц"));
 
@@ -51,19 +51,19 @@ public class WordleDictionaryHelperTest {
     }
 
     @Test
-    void buildHintString_fullMatch() {
+    public void buildHintString_fullMatch() {
         String answer = "гонец";
         Assertions.assertEquals("+++++", WordleDictionaryHelper.buildHintString(answer, "гонец"));
     }
 
     @Test
-    void buildHintString_noMatchingLetters() {
+    public void buildHintString_noMatchingLetters() {
         String answer = "гонец";
         Assertions.assertEquals("-----", WordleDictionaryHelper.buildHintString(answer, "шляпа"));
     }
 
     @Test
-    void buildHintString_letterInCorrectPosition() {
+    public void buildHintString_letterInCorrectPosition() {
         String answer = "гонец";
         Assertions.assertEquals("+----", WordleDictionaryHelper.buildHintString(answer, "гxxxx"));
         Assertions.assertEquals("--+--", WordleDictionaryHelper.buildHintString(answer, "ххнхх"));
